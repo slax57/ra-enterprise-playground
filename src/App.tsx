@@ -5,7 +5,7 @@ import {
   MenuItem,
   MenuItemCategory,
   MultiLevelMenu,
-  theme,
+  theme as raNavigationTheme,
 } from "@react-admin/ra-navigation";
 import { makeStyles } from "@material-ui/core/styles";
 import jsonServerProvider from "ra-data-json-server";
@@ -15,6 +15,10 @@ import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import PeopleIcon from "@material-ui/icons/People";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { CardContent, Typography } from "@material-ui/core";
+import { defaultTheme } from "react-admin";
+import { ThemeOptions } from "@react-admin/ra-navigation";
+
+import merge from "lodash/merge";
 
 const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
 
@@ -26,6 +30,30 @@ const useStyles = makeStyles({
     marginTop: "auto",
   },
 });
+
+const palette = merge({}, defaultTheme.palette, {
+  sidebar: {
+    width: 239,
+    closedWidth: 69,
+  },
+});
+
+const theme: ThemeOptions = {
+  ...defaultTheme,
+  overrides: {
+    RaSidebar: {
+      drawerPaper: {
+        width: "240px",
+        closedWidth: "70px",
+        marginRight: "1em",
+      },
+      fixed: {
+        zIndex: 1200,
+      },
+    },
+  },
+  palette,
+};
 
 const MyMenu = () => {
   const classes = useStyles();
