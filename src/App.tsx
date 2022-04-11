@@ -1,153 +1,120 @@
-import { Admin, Layout, ListGuesser, Resource } from "react-admin";
+import * as React from "react";
+import { Admin, Layout, Menu, Sidebar } from "@react-admin/ra-enterprise";
 import {
   AppLocationContext,
-  Menu,
   MenuItem,
-  MenuItemCategory,
   MultiLevelMenu,
+  ThemeOptions,
   theme as raNavigationTheme,
 } from "@react-admin/ra-navigation";
+import {
+  ListGuesser,
+  Resource,
+  Layout as RaLayout,
+  Sidebar as RaSidebar,
+  defaultTheme,
+} from "react-admin";
+import localStorageDataProvider from "ra-data-local-storage";
+import { createTheme } from "@material-ui/core/styles";
 import { makeStyles } from "@material-ui/core/styles";
-import jsonServerProvider from "ra-data-json-server";
+import ScheduleIcon from "@material-ui/icons/Schedule";
+import BuildIcon from "@material-ui/icons/Build";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
-import PeopleIcon from "@material-ui/icons/People";
-import SettingsIcon from "@material-ui/icons/Settings";
-import { CardContent, Typography } from "@material-ui/core";
-import { defaultTheme } from "react-admin";
-import { ThemeOptions } from "@react-admin/ra-navigation";
-
-import merge from "lodash/merge";
-
-const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
-
-const MyDashboard = () => <h1>My Dashboard</h1>;
-
-const useStyles = makeStyles({
-  // Custom styles for the configuration item so that it appears at the very bottom of the sidebar
-  configuration: {
-    marginTop: "auto",
-  },
-});
-
-const palette = merge({}, defaultTheme.palette, {
-  sidebar: {
-    width: 239,
-    closedWidth: 69,
-  },
-});
-
-const theme: ThemeOptions = {
+export const customTheme: ThemeOptions = {
   ...defaultTheme,
   overrides: {
     RaSidebar: {
       drawerPaper: {
-        width: "240px",
-        closedWidth: "70px",
-        marginRight: "1em",
+        width: 96,
       },
       fixed: {
         zIndex: 1200,
       },
     },
   },
-  palette,
 };
 
-const MyMenu = () => {
-  const classes = useStyles();
+const useStyles = makeStyles({
+  logo: {
+    height: "30%",
+    width: "100%",
+    margin: "0.5rem",
+  },
+});
 
+const MyCustomIcon = () => {
+  const classes = useStyles();
+  return <img alt="" className={classes.logo} src="/logo.svg" />;
+};
+
+//const CustomSidebar = (props) => <Sidebar {...props} />;
+
+const useSidebarStyles = makeStyles({
+  drawerPaper: {
+    backgroundColor: "#333645",
+  },
+});
+
+const MySidebar = (props: any) => {
+  const classes = useSidebarStyles();
   return (
-    <MultiLevelMenu variant="categories">
-      <MenuItemCategory
-        name="dashboard"
-        to="/"
-        exact
-        label="Dashboard"
-        icon={<DashboardIcon />}
-      />
-      <MenuItemCategory
-        name="songs"
-        icon={<LibraryMusicIcon />}
-        to="/songs"
-        label="Songs"
-      />
-      {/* The empty filter is required to avoid falling back to the previously set filter */}
-      <MenuItemCategory
-        name="artists"
-        to={"/artists?filter={}"}
-        label="Artists"
-        icon={<PeopleIcon />}
-      >
-        {/* CardContent to get consistent spacings */}
-        <CardContent>
-          <Typography variant="h3" gutterBottom>
-            Custom title
-          </Typography>
-          {/* Note that we must wrap our MenuItem components in a Menu */}
-          <Menu>
-            <MenuItem
-              name="artists.rock"
-              to={'/artists?filter={"type":"Rock"}'}
-              label="Rock"
-            >
-              <MenuItem
-                name="artists.rock.pop"
-                to={'/artists?filter={"type":"Pop Rock"}'}
-                label="Pop Rock"
-              />
-              <MenuItem
-                name="artists.rock.folk"
-                to={'/artists?filter={"type":"Folk Rock"}'}
-                label="Folk Rock"
-              />
-            </MenuItem>
-            <MenuItem
-              name="artists.jazz"
-              to={'/artists?filter={"type":"Jazz"}'}
-              label="Jazz"
-            >
-              <MenuItem
-                name="artists.jazz.rb"
-                to={'/artists?filter={"type":"RB"}'}
-                label="R&B"
-              />
-            </MenuItem>
-          </Menu>
-        </CardContent>
-      </MenuItemCategory>
-      <MenuItemCategory
-        className={classes.configuration}
-        name="configuration"
-        to="/"
-        exact
-        label="Configuration"
-        icon={<SettingsIcon />}
-      />
-    </MultiLevelMenu>
+    <Sidebar
+      classes={classes}
+      {...props}
+    />
   );
 };
+
+const MyMenu = () => (
+  <MultiLevelMenu>
+    {/* <MyCustomIcon /> */}
+
+    <MenuItem
+      name="data"
+      icon={<ScheduleIcon />}
+      to="/data"
+      label="Data"
+      exact
+    />
+
+    <MenuItem name="/" to="/#" icon={<BuildIcon />} label="Something " />
+  </MultiLevelMenu>
+);
 
 const MyLayout = (props: any) => {
   return (
     <AppLocationContext>
-      <Layout {...props} menu={MyMenu} />
+      <Layout menu={MyMenu} sidebar={MySidebar} {...props} />
     </AppLocationContext>
   );
 };
+
+const dataProvider = localStorageDataProvider({
+  defaultData: {
+    data: [
+      { id: 1, label: "1" },
+      { id: 2, label: "2" },
+    ],
+  },
+});
 
 export const App = () => (
   <Admin
     dataProvider={dataProvider}
     layout={MyLayout}
-    dashboard={MyDashboard}
-    /* Apply the theme provided by ra-navigation */
-    theme={theme}
+    //theme={raNavigationTheme}
+    //theme={customTheme}
   >
-    <Resource name="users" list={ListGuesser} />
-    <Resource name="todos" list={ListGuesser} />
-    <Resource name="artists" list={ListGuesser} />
-    <Resource name="songs" list={ListGuesser} />
+    {/* <CssBaseline /> */}
+
+    <Resource
+      name="data"
+      list={ListGuesser}
+      icon={ScheduleIcon}
+      options={{ label: "Data" }}
+    />
+
+    <Resource name="/" icon={ScheduleIcon} options={{ label: "Something" }} />
   </Admin>
 );
