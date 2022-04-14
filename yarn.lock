@@ -1534,7 +1534,7 @@
   dependencies:
     "@toast-ui/react-editor" "^2.2.0"
 
-"@react-admin/ra-navigation@^3.0.0":
+"@react-admin/ra-navigation@^3.0.0", "@react-admin/ra-navigation@^3.1.1":
   version "3.1.1"
   resolved "https://registry.marmelab.com/@react-admin%2fra-navigation/-/ra-navigation-3.1.1.tgz#e1770e657d34fd344568a5ec26ae04b4471bfe13"
   integrity sha512-HgfpK3LhKh3NkLOJqjMW/XrEUwKW+s60T9bNE6ZPWBpMdfgyEZQXa/lNs9us0P1+sKAn/Jjaen+YRvKZKbcqVw==
