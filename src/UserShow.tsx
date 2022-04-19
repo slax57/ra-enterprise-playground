@@ -10,10 +10,10 @@ export const UserShow = (props: any) => (
     <Breadcrumb>
       {/* <ResourceBreadcrumbItems /> */}
       {/* <ResourceBreadcrumbItems resources={["users"]} /> */}
-      <BreadcrumbItem name="users" label="Users">
+      <BreadcrumbItem name="users" label="Users" to="/users">
         <BreadcrumbItem
           name="show"
-          label={({ record }: { record?: any }) => `Record #${record?.id}`}
+          label={({ record }: { record?: any }) => `Record #${record?.name}`}
         />
       </BreadcrumbItem>
     </Breadcrumb>
