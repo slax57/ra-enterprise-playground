@@ -5,12 +5,15 @@ import { PostList } from "./PostList";
 import { PostCreate } from "./PostCreate";
 import { PostEdit } from "./PostEdit";
 
-const dataProvider = fakeDataProvider({
-  posts: [
-    { id: 0, key: "test-000" },
-    { id: 1, key: "test-001" },
-  ],
-});
+const dataProvider = fakeDataProvider(
+  {
+    posts: [
+      { id: 0, key: "test-000" },
+      { id: 1, key: "test-001" },
+    ],
+  },
+  true
+);
 
 const App = () => (
   <Admin dataProvider={dataProvider}>
