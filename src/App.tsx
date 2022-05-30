@@ -1,28 +1,17 @@
 import * as React from "react";
-import { Admin, Resource, ListGuesser, EditGuesser } from "react-admin";
-import fakeDataProvider from "ra-data-fakerest";
-import { PostList } from "./PostList";
-import { PostCreate } from "./PostCreate";
-import { PostEdit } from "./PostEdit";
+import { Admin, Resource } from "react-admin";
+import fakeRestProvider from "ra-data-fakerest";
+import posts from "./posts";
+import { data } from "./data";
 
-const dataProvider = fakeDataProvider(
-  {
-    posts: [
-      { id: 0, key: "test-000" },
-      { id: 1, key: "test-001" },
-    ],
-  },
-  true
-);
+const dataProvider = fakeRestProvider(data, true);
 
 const App = () => (
   <Admin dataProvider={dataProvider}>
-    <Resource
-      name="posts"
-      list={PostList}
-      edit={PostEdit}
-      create={PostCreate}
-    />
+    <Resource name="posts" {...posts} />
+    <Resource name="comments" />
+    <Resource name="tags" />
+    <Resource name="users" />
   </Admin>
 );
 
