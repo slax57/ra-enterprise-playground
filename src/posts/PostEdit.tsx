@@ -9,8 +9,8 @@ import {
   DateInput,
 } from "react-admin";
 
-export const PostEdit = () => (
-  <Edit>
+export const PostEdit = (props: any) => (
+  <Edit {...props}>
     <SimpleForm>
       <TextInput source="id" disabled />
       <TextInput source="title" />

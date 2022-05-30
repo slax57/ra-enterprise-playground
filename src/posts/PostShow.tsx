@@ -11,8 +11,8 @@ import {
   UrlField,
 } from "react-admin";
 
-export const PostShow = () => (
-  <Show>
+export const PostShow = (props: any) => (
+  <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
       <TextField source="title" />
