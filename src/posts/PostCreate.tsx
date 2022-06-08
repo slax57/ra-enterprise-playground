@@ -9,8 +9,8 @@ import {
   DateInput,
 } from "react-admin";
 
-export const PostCreate = (props: any) => (
-  <Create {...props}>
+export const PostCreate = () => (
+  <Create>
     <SimpleForm>
       <TextInput source="title" />
       <TextInput source="teaser" />

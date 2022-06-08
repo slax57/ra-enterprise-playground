@@ -10,8 +10,8 @@ import {
   DateField,
 } from "react-admin";
 
-export const PostList = (props: any) => (
-  <List {...props}>
+export const PostList = () => (
+  <List>
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <TextField source="title" />
