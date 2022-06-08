@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Admin, Resource } from "react-admin";
+import { Resource } from "react-admin";
+//import { Admin } from "react-admin";
+import { Admin } from "@react-admin/ra-enterprise";
 import fakeRestProvider from "ra-data-fakerest";
 import posts from "./posts";
 import { data } from "./data";
