@@ -56,7 +56,7 @@ export const WriterForm = () => {
         </ReferenceManyToManyInput>
       )}
 
-      {true && (
+      {false && (
         <ReferenceInput reference="categories" source="categories">
           <SelectArrayInput optionText="name" />
         </ReferenceInput>
