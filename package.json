@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-admin/ra-enterprise": "latest",
+    "@react-admin/ra-relationships": "latest",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -12,7 +14,7 @@
     "@types/react-dom": "^17.0.9",
     "ra-data-fakerest": "^3.19",
     "react": "^18.0.0",
-    "react-admin": "^3.19",
+    "react-admin": "latest",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
     "typescript": "^4.4.2",
