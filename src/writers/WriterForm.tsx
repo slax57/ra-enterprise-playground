@@ -2,16 +2,18 @@ import { ReferenceManyToManyInput } from "@react-admin/ra-relationships";
 import {
   AutocompleteArrayInput,
   CheckboxGroupInput,
-  ReferenceInput,
   SelectArrayInput,
   TextInput,
 } from "react-admin";
 
 export const WriterForm = () => {
+  const useCheckboxGroupInput = false;
+  const useAutocompleteArrayInput = false;
+  const useSelectArrayInput = true;
   return (
     <>
       <TextInput source="name" />
-      {false && (
+      {useCheckboxGroupInput && (
         <ReferenceManyToManyInput
           source="id"
           reference="posts"
@@ -26,7 +28,7 @@ export const WriterForm = () => {
         </ReferenceManyToManyInput>
       )}
 
-      {false && (
+      {useAutocompleteArrayInput && (
         <ReferenceManyToManyInput
           source="id"
           reference="posts"
@@ -41,7 +43,7 @@ export const WriterForm = () => {
         </ReferenceManyToManyInput>
       )}
 
-      {true && (
+      {useSelectArrayInput && (
         <ReferenceManyToManyInput
           source="id"
           reference="posts"
@@ -54,12 +56,6 @@ export const WriterForm = () => {
             label="SelectArrayInput"
           />
         </ReferenceManyToManyInput>
-      )}
-
-      {false && (
-        <ReferenceInput reference="categories" source="categories">
-          <SelectArrayInput optionText="name" />
-        </ReferenceInput>
       )}
     </>
   );
