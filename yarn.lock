@@ -1766,7 +1766,7 @@
 
 "@react-admin/ra-enterprise@^6.0.4":
   version "6.0.4"
-  resolved "https://registry2.marmelab.com/download/@react-admin/ra-enterprise/6.0.4/4f39f33e070d9ec4695d8abae910ced588d82005#4f39f33e070d9ec4695d8abae910ced588d82005"
+  resolved "https://registry.marmelab.com/download/@react-admin/ra-enterprise/6.0.4/4f39f33e070d9ec4695d8abae910ced588d82005#4f39f33e070d9ec4695d8abae910ced588d82005"
   integrity sha512-UW8cTb4+qEKL3DbWHgFp26H7pXu6qGo0qU+CeXhEN7WprvQzROJqg+Sjy21zBV02dQ4+ASzxsi0S1eb/6SecYQ==
   dependencies:
     "@react-admin/ra-audit-log" "^4.0.1"
