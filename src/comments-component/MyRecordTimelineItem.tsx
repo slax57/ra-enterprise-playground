@@ -37,6 +37,7 @@ export const MyRecordTimelineItem = () => {
               <strong className={MyRecordTimelineItemClasses.author}>
                 {record.author.fullName}
               </strong>
+              {record?.action === "comment" ? <>&nbsp;commented</> : null}
             </Typography>
           </div>
         }
