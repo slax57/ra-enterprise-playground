@@ -5,14 +5,33 @@ import {
   useRecordEvents,
   UseRecordEventsOptions,
 } from "@react-admin/ra-audit-log";
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Card, Typography, TextField, Button, Stack } from "@mui/material";
 import { MyRecordTimelineItem } from "./MyRecordTimelineItem";
+import { useAddComment } from "./useAddComment";
+import React from "react";
+import { useRefresh } from "react-admin";
 
 export const MyRecordTimeline = (props: MyRecordTimelineProps) => {
   const { data, isLoading } = useRecordEvents(props);
-
   const { page, perPage, sort, order, record, resource, skeleton, ...rest } =
     props;
+  const refresh = useRefresh();
+  const [commentBody, setCommentBody] = React.useState("");
+  const addComment = useAddComment({
+    record,
+    resource,
+    mutationOptions: {
+      onSuccess: () => {
+        setCommentBody("");
+        refresh();
+      },
+    },
+  });
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    addComment({ body: commentBody });
+    return false;
+  };
 
   return (
     <Box sx={{ ml: 2, minWidth: 300 }}>
@@ -31,6 +50,22 @@ export const MyRecordTimeline = (props: MyRecordTimelineProps) => {
             </TimelineGroup>
           </Timeline>
         )}
+        <Box>
+          <form onSubmit={handleSubmit}>
+            <Stack>
+              <TextField
+                label="Write a comment"
+                value={commentBody}
+                onChange={(event) => setCommentBody(event.target.value)}
+                multiline
+                rows={3}
+              />
+              <Button type="submit" variant="contained">
+                Add comment
+              </Button>
+            </Stack>
+          </form>
+        </Box>
       </Card>
     </Box>
   );
