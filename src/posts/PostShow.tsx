@@ -10,9 +10,10 @@ import {
   DateField,
   UrlField,
 } from "react-admin";
+import { EventsAndCommentsTimeline } from "../comments-component/EventsAndCommentsTimeline";
 
 export const PostShow = () => (
-  <Show>
+  <Show aside={<EventsAndCommentsTimeline />}>
     <SimpleShowLayout>
       <TextField source="id" />
       <TextField source="title" />

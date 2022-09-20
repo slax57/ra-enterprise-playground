@@ -6,9 +6,10 @@ import {
   SimpleForm,
   TextInput,
 } from "react-admin";
+import { EventsAndCommentsTimeline } from "../comments-component/EventsAndCommentsTimeline";
 
 export const CommentEdit = () => (
-  <Edit>
+  <Edit aside={<EventsAndCommentsTimeline />}>
     <SimpleForm>
       <TextInput source="id" />
       <DateInput source="author.undefined" />

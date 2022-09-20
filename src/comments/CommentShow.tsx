@@ -5,9 +5,10 @@ import {
   SimpleShowLayout,
   TextField,
 } from "react-admin";
+import { EventsAndCommentsTimeline } from "../comments-component/EventsAndCommentsTimeline";
 
 export const CommentShow = () => (
-  <Show>
+  <Show aside={<EventsAndCommentsTimeline />}>
     <SimpleShowLayout>
       <TextField source="id" />
       <DateField source="author.undefined" />
