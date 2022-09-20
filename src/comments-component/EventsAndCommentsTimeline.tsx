@@ -6,12 +6,14 @@ import {
   UseRecordEventsOptions,
 } from "@react-admin/ra-audit-log";
 import { Box, Card, Typography, TextField, Button, Stack } from "@mui/material";
-import { MyRecordTimelineItem } from "./MyRecordTimelineItem";
+import { EventsAndCommentsTimelineItem } from "./EventsAndCommentsTimelineItem";
 import { useAddComment } from "./useAddComment";
 import React from "react";
 import { useRefresh } from "react-admin";
 
-export const MyRecordTimeline = (props: MyRecordTimelineProps) => {
+export const EventsAndCommentsTimeline = (
+  props: EventsAndCommentsTimelineProps
+) => {
   const { data, isLoading } = useRecordEvents(props);
   const { page, perPage, sort, order, record, resource, skeleton, ...rest } =
     props;
@@ -46,7 +48,7 @@ export const MyRecordTimeline = (props: MyRecordTimelineProps) => {
             {...rest}
           >
             <TimelineGroup>
-              <MyRecordTimelineItem />
+              <EventsAndCommentsTimelineItem />
             </TimelineGroup>
           </Timeline>
         )}
@@ -71,5 +73,5 @@ export const MyRecordTimeline = (props: MyRecordTimelineProps) => {
   );
 };
 
-type MyRecordTimelineProps = UseRecordEventsOptions &
+type EventsAndCommentsTimelineProps = UseRecordEventsOptions &
   Omit<TimelineProps, "records" | "isLoading">;

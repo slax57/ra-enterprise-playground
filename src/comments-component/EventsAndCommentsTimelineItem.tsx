@@ -6,7 +6,7 @@ import {
 } from "@react-admin/ra-audit-log";
 import { ListItem, styled, ListItemText, Typography } from "@mui/material";
 
-export const MyRecordTimelineItem = () => {
+export const EventsAndCommentsTimelineItem = () => {
   const record = useRecordContext<EventRecord>();
   let actionLabel = useEventLabel({ record, variant: "record" });
   if (record?.action === "comment") {
@@ -21,9 +21,9 @@ export const MyRecordTimelineItem = () => {
     <Root button={false} dense disableGutters>
       <ListItemText
         primary={
-          <div className={MyRecordTimelineItemClasses.authorContainer}>
+          <div className={EventsAndCommentsTimelineItemClasses.authorContainer}>
             <EventAvatar
-              className={MyRecordTimelineItemClasses.avatar}
+              className={EventsAndCommentsTimelineItemClasses.avatar}
               alt={record.author.fullName}
               src={record.author.avatar}
               fullName={record.author.fullName}
@@ -32,9 +32,9 @@ export const MyRecordTimelineItem = () => {
             />
             <Typography
               color="textPrimary"
-              className={MyRecordTimelineItemClasses.content}
+              className={EventsAndCommentsTimelineItemClasses.content}
             >
-              <strong className={MyRecordTimelineItemClasses.author}>
+              <strong className={EventsAndCommentsTimelineItemClasses.author}>
                 {record.author.fullName}
               </strong>
               {record?.action === "comment" ? <>&nbsp;commented</> : null}
@@ -42,7 +42,7 @@ export const MyRecordTimelineItem = () => {
           </div>
         }
         secondary={
-          <span className={MyRecordTimelineItemClasses.action}>
+          <span className={EventsAndCommentsTimelineItemClasses.action}>
             {actionLabel}
           </span>
         }
@@ -51,8 +51,8 @@ export const MyRecordTimelineItem = () => {
   );
 };
 
-const PREFIX = "MyRaRecordTimelineItem";
-export const MyRecordTimelineItemClasses = {
+const PREFIX = "EventsAndCommentsTimelineItem";
+export const EventsAndCommentsTimelineItemClasses = {
   content: `${PREFIX}-content`,
   authorContainer: `${PREFIX}-authorContainer`,
   avatar: `${PREFIX}-avatar`,
@@ -65,18 +65,18 @@ const Root = styled(ListItem, {
   name: PREFIX,
   overridesResolver: (props, styles) => styles.root,
 })(({ theme }) => ({
-  [`& .${MyRecordTimelineItemClasses.content}`]: {
+  [`& .${EventsAndCommentsTimelineItemClasses.content}`]: {
     display: "flex",
     flexWrap: "wrap",
   },
-  [`& .${MyRecordTimelineItemClasses.authorContainer}`]: {
+  [`& .${EventsAndCommentsTimelineItemClasses.authorContainer}`]: {
     display: "flex",
     alignItems: "center",
   },
-  [`& .${MyRecordTimelineItemClasses.avatar}`]: {
+  [`& .${EventsAndCommentsTimelineItemClasses.avatar}`]: {
     marginRight: theme.spacing(1),
   },
-  [`& .${MyRecordTimelineItemClasses.author}`]: {},
-  [`& .${MyRecordTimelineItemClasses.action}`]: {},
-  [`& .${MyRecordTimelineItemClasses.date}`]: {},
+  [`& .${EventsAndCommentsTimelineItemClasses.author}`]: {},
+  [`& .${EventsAndCommentsTimelineItemClasses.action}`]: {},
+  [`& .${EventsAndCommentsTimelineItemClasses.date}`]: {},
 }));

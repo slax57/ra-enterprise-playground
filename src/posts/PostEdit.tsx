@@ -8,10 +8,10 @@ import {
   SimpleFormIterator,
   DateInput,
 } from "react-admin";
-import { MyRecordTimeline } from "../comments-component/MyRecordTimeline";
+import { EventsAndCommentsTimeline } from "../comments-component/EventsAndCommentsTimeline";
 
 export const PostEdit = () => (
-  <Edit aside={<MyRecordTimeline />}>
+  <Edit aside={<EventsAndCommentsTimeline />}>
     <SimpleForm>
       <TextInput source="id" disabled />
       <TextInput source="title" />
