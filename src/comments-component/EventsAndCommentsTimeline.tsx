@@ -36,7 +36,7 @@ export const EventsAndCommentsTimeline = (
   };
 
   return (
-    <Box sx={{ ml: 2, minWidth: 300 }}>
+    <Box sx={{ ml: 2, width: 350 }}>
       <Card sx={{ p: 2 }}>
         {!isLoading && !data?.length ? (
           <Typography>There are no comments yet</Typography>
