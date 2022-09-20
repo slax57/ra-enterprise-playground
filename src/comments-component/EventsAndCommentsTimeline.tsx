@@ -38,6 +38,22 @@ export const EventsAndCommentsTimeline = (
   return (
     <Box sx={{ ml: 2, width: 350 }}>
       <Card sx={{ p: 2 }}>
+        <Box sx={{ mb: 4 }}>
+          <form onSubmit={handleSubmit}>
+            <Stack>
+              <TextField
+                label="Write a new comment"
+                value={commentBody}
+                onChange={(event) => setCommentBody(event.target.value)}
+                multiline
+                rows={3}
+              />
+              <Button type="submit" variant="contained">
+                Submit comment
+              </Button>
+            </Stack>
+          </form>
+        </Box>
         {!isLoading && !data?.length ? (
           <Typography>There are no comments yet</Typography>
         ) : (
@@ -52,22 +68,6 @@ export const EventsAndCommentsTimeline = (
             </TimelineGroup>
           </Timeline>
         )}
-        <Box>
-          <form onSubmit={handleSubmit}>
-            <Stack>
-              <TextField
-                label="Write a comment"
-                value={commentBody}
-                onChange={(event) => setCommentBody(event.target.value)}
-                multiline
-                rows={3}
-              />
-              <Button type="submit" variant="contained">
-                Add comment
-              </Button>
-            </Stack>
-          </form>
-        </Box>
       </Card>
     </Box>
   );
