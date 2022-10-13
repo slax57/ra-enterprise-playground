@@ -482,4 +482,23 @@ export const data = {
       role: "user",
     },
   ],
+  events: [
+    {
+      id: 1,
+      dtstart: "2022-10-23T11:30:00",
+      dtend: "2022-10-23T12:00:00",
+      title: "event 1",
+    },
+    {
+      id: 2,
+      title: "event 2",
+      dtstart: "2022-10-01T10:30:00",
+      rrule: {
+        freq: "weekly",
+        byweekday: ["mo", "fr"],
+        dtstart: "2022-10-01T10:30:00", // will also accept '20120201T103000'
+        until: "2022-12-01", // will also accept '20120201'
+      },
+    },
+  ],
 };
