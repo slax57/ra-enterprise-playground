@@ -2,12 +2,11 @@ import * as React from "react";
 import { Resource } from "react-admin";
 //import { Admin } from "react-admin";
 import { Admin } from "@react-admin/ra-enterprise";
-import fakeRestProvider from "ra-data-fakerest";
+import jsonServerProvider from "ra-data-json-server";
 import posts from "./posts";
 import comments from "./comments";
-import { data } from "./data";
 
-const dataProvider = fakeRestProvider(data, true);
+const dataProvider = jsonServerProvider("http://localhost:3000");
 
 const App = () => (
   <Admin dataProvider={dataProvider}>

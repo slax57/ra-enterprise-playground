@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   List,
   Datagrid,
@@ -15,7 +16,6 @@ export const PostList = () => (
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <TextField source="title" />
-      <TextField source="teaser" />
       <NumberField source="views" />
       <NumberField source="average_note" />
       <BooleanField source="commentable" />

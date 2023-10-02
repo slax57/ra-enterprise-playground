@@ -1,14 +1,15 @@
+import * as React from "react";
 import {
+  Datagrid,
   DateField,
+  List,
   ReferenceField,
-  Show,
-  SimpleShowLayout,
   TextField,
 } from "react-admin";
 
-export const CommentShow = () => (
-  <Show>
-    <SimpleShowLayout>
+export const CommentList = () => (
+  <List>
+    <Datagrid rowClick="edit">
       <TextField source="id" />
       <DateField source="author.undefined" />
       <ReferenceField source="post_id" reference="posts">
@@ -16,6 +17,6 @@ export const CommentShow = () => (
       </ReferenceField>
       <TextField source="body" />
       <DateField source="created_at" />
-    </SimpleShowLayout>
-  </Show>
+    </Datagrid>
+  </List>
 );
