@@ -1,10 +1,10 @@
 import {
-  Admin,
   Resource,
   ListGuesser,
   EditGuesser,
   ShowGuesser,
 } from "react-admin";
+import { Admin } from "@react-admin/ra-enterprise";
 import { Layout } from "./Layout";
 import { dataProvider } from "./dataProvider";
 import { authProvider } from "./authProvider";
@@ -29,3 +29,4 @@ export const App = () => (
     />
   </Admin>
 );
+
