@@ -1,19 +1,27 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "lib",
-    "rootDir": "src",
-    "declaration": true,
-    "allowJs": false,
-    "jsx": "react",
-    "lib": ["es2017", "dom"],
-    "target": "esnext",
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "types": ["jest", "node", "vite/client"]
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vitest/globals"]
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

@@ -7,10 +7,20 @@ install: ## Install all dependencies
 	yarn
 
 start-playground: ## Start the playground
-	@cd ./packages/playground && yarn start
+	@cd ./packages/playground && yarn dev
 
 start-fake-api: ## Start the fake API
 	@cd ./packages/demo-fake-api && yarn start
 
+build-playground: ## Build the playground
+	@cd ./packages/playground && yarn build
+
+test-playground: ## Test the playground
+	@cd ./packages/playground && yarn test
+
 start: ## Start all
 	@(trap 'kill 0' INT; ${MAKE} start-fake-api & ${MAKE} start-playground)
+
+build: build-playground ## Build all
+
+test: test-playground ## Test all
